@@ -1,0 +1,228 @@
+<!-- try to power on using external supply -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fix Me App</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+      rel="stylesheet"
+    />
+
+    <!-- Vendor CSS Files -->
+    <link
+      href="../../../../assets/vendor/bootstrap/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="../../../../assets/vendor/bootstrap-icons/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link
+      href="../../../../assets/vendor/boxicons/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="../../../../assets/vendor/quill/quill.snow.css"
+      rel="stylesheet"
+    />
+    <link
+      href="../../../../assets/vendor/quill/quill.bubble.css"
+      rel="stylesheet"
+    />
+    <link
+      href="../../../../assets/vendor/remixicon/remixicon.css"
+      rel="stylesheet"
+    />
+    <link
+      href="../../../../assets/vendor/simple-datatables/style.css"
+      rel="stylesheet"
+    />
+
+    <!-- Main CSS File -->
+    <link href="../../../../assets/css/style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="position-absolute ms-5 mt-4">
+      <a href="./step-2.html">
+        <img
+          style="width: 50px; height: 50px; display: block"
+          src="../../../../assets/img/backbutton.png"
+          alt=""
+        />
+      </a>
+    </div>
+    <!-- <div class="container text-center mt-2">
+      <h1 style="font-family: serif" class="card-title text-center fs-3">
+        Troubleshooting no power issue...
+      </h1>
+    </div> -->
+    <div class="container-fluid mt-2">
+      <p class="fs-1 lh-base text-center text-danger">Try External Supply !</p>
+      <p class="text-secondary fs-5 ms-3">
+        Your battery has enough voltage to power on, but your phone is still not
+        turning on. Try to use the external power supply to power it on.
+        Guidance for using the external power supply is located in the right
+        corner.
+      </p>
+
+      <div class="container d-flex gap-5">
+        <!-- voltage input field -->
+        <div class="w-50 p-3 rounded-3" style="background-color: white">
+          <form class="row g-3">
+            <div class="">
+              <img
+                src="../../../../assets/img/troubleshoot/keypad/dc-supply.jpeg"
+                class="img-fluid d-block"
+                style="height: 250px; width: 500px"
+                alt=""
+              />
+            </div>
+            <div class="col-12 text-center">
+              <p class="card-title">Select one of following after inspection</p>
+              <button
+                class="btn btn-outline-primary w-50 mt-2"
+                type="button"
+                onclick="onWork()"
+              >
+                It Works!
+              </button>
+              <button
+                class="btn btn-outline-danger w-50 mt-2"
+                type="button"
+                onclick="onNotWork()"
+              >
+                Not Work!
+              </button>
+            </div>
+          </form>
+        </div>
+        <!-- card - instructions -->
+        <div class="w-50">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Steps for use power supply</h5>
+              <p class="card-text">
+                1. Turn On the Power Supply using power switch.
+              </p>
+              <p class="card-text">
+                2. Adjust voltage to 3.7V using voltage adjustment knobs.
+              </p>
+              <p class="card-text">
+                3. Adjust current to range between 1A and 2A using current
+                adjustment knobs.
+              </p>
+              <p class="card-text">
+                4. Connect the positive lead from the power supply to the
+                positive terminal on the phone.
+              </p>
+              <p class="card-text">
+                5. Connect the negative lead from the power supply to the
+                negative terminal on the phone.
+              </p>
+              <p class="card-text">
+                6. Now, Attempt to power on the phone using its power button.
+              </p>
+              <button class="btn btn-primary">Watch Tutorial >></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- battery dead modal -->
+    <div class="modal fade" id="bat-dead-modal" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Battery Replacement Needed !</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            your battery is dead. you have to replace a new battery. would you
+            like to purchase it from us, please select purchase now. if not you
+            can exit.
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-primary"
+              onclick="purchaseNow()"
+            >
+              Purchase Now
+            </button>
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="button" class="btn btn-danger" onclick="exit()">
+              Exit
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mother Board issue -->
+    <div class="modal fade" id="mb-issue-modal" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Attention !</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            Your device contain a motherboard issue. you have to hire a
+            technician to fix it.
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" onclick="hireNow()">
+              Hire Now
+            </button>
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Not Now
+            </button>
+            <button type="button" class="btn btn-danger" onclick="exit()">
+              Exit
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Vendor JS Files -->
+    <script src="../../../../assets/vendor/apexcharts/apexcharts.min.js"></script>
+    <script src="../../../../assets/vendor/chart.js/chart.umd.js"></script>
+    <script src="../../../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../../../../assets/vendor/echarts/echarts.min.js"></script>
+    <script src="../../../../assets/vendor/quill/quill.js"></script>
+    <script src="../../../../assets/vendor/simple-datatables/simple-datatables.js"></script>
+    <script src="../../../../assets/vendor/tinymce/tinymce.min.js"></script>
+    <script src="../../../../assets/vendor/php-email-form/validate.js"></script>
+
+    <!-- Main JS File -->
+    <script src="../../../../assets/js/mainjs.js"></script>
+    <script src="step-3.js"></script>
+  </body>
+</html>

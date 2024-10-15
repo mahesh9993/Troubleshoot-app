@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fix Me App</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+      rel="stylesheet"
+    />
+
+    <!-- Vendor CSS Files -->
+    <link
+      href="../../assets/vendor/bootstrap/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="../../assets/vendor/bootstrap-icons/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link
+      href="../../assets/vendor/boxicons/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link href="../../assets/vendor/quill/quill.snow.css" rel="stylesheet" />
+    <link href="../../assets/vendor/quill/quill.bubble.css" rel="stylesheet" />
+    <link href="../../assets/vendor/remixicon/remixicon.css" rel="stylesheet" />
+    <link
+      href="../../assets/vendor/simple-datatables/style.css"
+      rel="stylesheet"
+    />
+
+    <!-- Template Main CSS File -->
+    <link href="../../assets/css/style.css" rel="stylesheet" />
+
+    <!-- load header -->
+    <script src="loadHeader.js" defer></script>
+  </head>
+  <body>
+    <div id="header"></div>
+
+    <main id="main" class="main">
+      <div class="pagetitle">
+        <h1>Jobs</h1>
+      </div>
+      <!-- End Page Title -->
+
+      <section class="section">
+        <!-- Bordered Tabs -->
+        <ul
+          class="nav nav-tabs nav-tabs-bordered"
+          id="borderedTab"
+          role="tablist"
+        >
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link active"
+              id="all-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#bordered-all"
+              type="button"
+              role="tab"
+              aria-controls="all"
+              aria-selected="true"
+            >
+              All
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link"
+              id="pending-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#bordered-pending"
+              type="button"
+              role="tab"
+              aria-controls="pending"
+              aria-selected="false"
+            >
+              Pending
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link"
+              id="processing-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#bordered-processing"
+              type="button"
+              role="tab"
+              aria-controls="processing"
+              aria-selected="false"
+            >
+              Processing
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link"
+              id="completed-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#bordered-completed"
+              type="button"
+              role="tab"
+              aria-controls="Completed"
+              aria-selected="false"
+            >
+              Completed
+            </button>
+          </li>
+        </ul>
+        <div class="tab-content pt-2" id="borderedTabContent">
+          <div
+            class="tab-pane fade show active"
+            id="bordered-all"
+            role="tabpanel"
+            aria-labelledby="all-tab"
+          >
+            <!-- table container -->
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="card">
+                  <div class="card-body">
+                    <!-- Table with stripped rows -->
+                    <table class="table datatable">
+                      <thead>
+                        <tr>
+                          <th><b>S</b>tart Date</th>
+                          <th>Problem</th>
+                          <th>Device</th>
+                          <th>Solution</th>
+                          <th>Status</th>
+                          <th>Customer</th>
+                        </tr>
+                      </thead>
+                      <tbody id="allJobs"></tbody>
+                    </table>
+                    <!-- End Table with stripped rows -->
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- end table container -->
+          </div>
+          <!-- end all tab -->
+          <!-- pending tab -->
+          <div
+            class="tab-pane fade"
+            id="bordered-pending"
+            role="tabpanel"
+            aria-labelledby="pending-tab"
+          >
+            <!-- table container -->
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="card">
+                  <div class="card-body">
+                    <!-- Table with stripped rows -->
+                    <table class="table datatable">
+                      <thead>
+                        <tr>
+                          <th><b>S</b>tart Date</th>
+                          <th>Problem</th>
+                          <th>Device</th>
+                          <th>Solution</th>
+                          <th>Status</th>
+                          <th>Customer</th>
+                          <th>Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody id="pendingJobs"></tbody>
+                    </table>
+                    <!-- End Table with stripped rows -->
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- end table container -->
+          </div>
+          <!-- end pending tab -->
+          <!-- processing tab -->
+          <div
+            class="tab-pane fade"
+            id="bordered-processing"
+            role="tabpanel"
+            aria-labelledby="processing-tab"
+          >
+            <!-- table container -->
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="card">
+                  <div class="card-body">
+                    <!-- Table with stripped rows -->
+                    <table class="table datatable">
+                      <thead>
+                        <tr>
+                          <th><b>S</b>tart Date</th>
+                          <th>Problem</th>
+                          <th>Device</th>
+                          <th>Solution</th>
+                          <th>Status</th>
+                          <th>Customer</th>
+                          <th>Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody id="processingJobs"></tbody>
+                    </table>
+                    <!-- End Table with stripped rows -->
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- end table container -->
+          </div>
+          <!-- end processing tab -->
+          <!-- completed tab -->
+          <div
+            class="tab-pane fade"
+            id="bordered-completed"
+            role="tabpanel"
+            aria-labelledby="completed-tab"
+          >
+            <!-- table container -->
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="card">
+                  <div class="card-body">
+                    <!-- Table with stripped rows -->
+                    <table class="table datatable">
+                      <thead>
+                        <tr>
+                          <th><b>S</b>tart Date</th>
+                          <th>Problem</th>
+                          <th>Device</th>
+                          <th>Solution</th>
+                          <th>Status</th>
+                          <th>Customer</th>
+                          <th>Completed Date</th>
+                        </tr>
+                      </thead>
+                      <tbody id="completedJobs"></tbody>
+                    </table>
+                    <!-- End Table with stripped rows -->
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- end table container -->
+          </div>
+          <!-- end completed tab -->
+        </div>
+
+        <!-- End Bordered Tabs -->
+      </section>
+    </main>
+    <!-- End #main -->
+
+    <!-- show customer modal -->
+    <div class="modal fade" id="customerModal" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2 class="modal-title">Owner Details</h2>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form class="row g-3">
+              <div class="col-12">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" readonly />
+              </div>
+              <div class="col-12">
+                <label for="nic" class="form-label">NIC</label>
+                <input type="text" class="form-control" id="nic" readonly />
+              </div>
+              <div class="col-12">
+                <label for="mobile" class="form-label">Mobile</label>
+                <input type="text" class="form-control" id="mobile" readonly />
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-bs-dismiss="modal"
+            >
+              Ok
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Accept job modal -->
+    <div class="modal fade" id="acceptJobs" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Confirmation</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">Do you really want to accept this Job?</div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-danger"
+              data-bs-dismiss="modal"
+            >
+              No
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              onclick="OnAcceptConfirm()"
+            >
+              Yes
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- complete job modal -->
+    <div class="modal fade" id="completeJobs" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Confirmation</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            Do you really want to mark this job as complete?
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-danger"
+              data-bs-dismiss="modal"
+            >
+              No
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              onclick="OnCompleteConfirm()"
+            >
+              Yes
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======= Footer ======= -->
+    <footer id="footer" class="footer">
+      <div class="copyright">
+        &copy; Copyright <strong><span>Divaan IT Solution</span></strong
+        >. All Rights Reserved
+      </div>
+    </footer>
+    <!-- End Footer -->
+    <!-- Vendor JS Files -->
+    <script src="../../assets/vendor/apexcharts/apexcharts.min.js"></script>
+    <script src="../../assets/vendor/chart.js/chart.umd.js"></script>
+    <script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/vendor/echarts/echarts.min.js"></script>
+    <script src="../../assets/vendor/quill/quill.js"></script>
+    <script src="../../assets/vendor/simple-datatables/simple-datatables.js"></script>
+    <script src="../../assets/vendor/tinymce/tinymce.min.js"></script>
+    <script src="../../assets/vendor/php-email-form/validate.js"></script>
+
+    <!-- main script -->
+    <!-- <script src="../../assets/js/mainjs.js"></script> -->
+    <script src="technician-jobs.js"></script>
+  </body>
+</html>

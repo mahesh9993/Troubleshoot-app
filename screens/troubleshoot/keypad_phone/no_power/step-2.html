@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fix Me App</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+      rel="stylesheet"
+    />
+
+    <!-- Vendor CSS Files -->
+    <link
+      href="../../../../assets/vendor/bootstrap/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="../../../../assets/vendor/bootstrap-icons/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link
+      href="../../../../assets/vendor/boxicons/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="../../../../assets/vendor/quill/quill.snow.css"
+      rel="stylesheet"
+    />
+    <link
+      href="../../../../assets/vendor/quill/quill.bubble.css"
+      rel="stylesheet"
+    />
+    <link
+      href="../../../../assets/vendor/remixicon/remixicon.css"
+      rel="stylesheet"
+    />
+    <link
+      href="../../../../assets/vendor/simple-datatables/style.css"
+      rel="stylesheet"
+    />
+
+    <!-- Main CSS File -->
+    <link href="../../../../assets/css/style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="position-absolute ms-5 mt-4">
+      <a href="../diagnose-keypad.html">
+        <img
+          style="width: 50px; height: 50px; display: block"
+          src="../../../../assets/img/backbutton.png"
+          alt=""
+        />
+      </a>
+    </div>
+    <!-- <div class="container text-center mt-2">
+      <h1 style="font-family: serif" class="card-title text-center fs-3">
+        Troubleshooting no power issue...
+      </h1>
+    </div> -->
+    <div class="container-fluid mt-2">
+      <p class="fs-1 lh-base text-center text-danger">
+        Check the Battery Voltage !
+      </p>
+      <p class="text-secondary fs-5 ms-3">
+        To ensure the battery is charged, Please Check the battery voltage using
+        multimeter and enter the value below. The guidence are given in the
+        right corner.
+      </p>
+
+      <div class="container d-flex gap-5">
+        <!-- voltage input field -->
+        <div class="w-50 p-3 rounded-3" style="background-color: white">
+          <form class="row g-3">
+            <div class="">
+              <img
+                src="../../../../assets/img/troubleshoot/keypad/check-cell-phone-battery-multimeter.jpg"
+                class="img-fluid d-block"
+                style="height: 300px; width: 500px"
+                alt=""
+              />
+            </div>
+            <div class="col-12">
+              <label for="inputVoltage" class="form-label"
+                >Enter Battery Voltage here</label
+              >
+              <input
+                type="number"
+                class="form-control"
+                id="inputVoltage"
+                required
+              />
+            </div>
+
+            <div class="text-center">
+              <button
+                type="button"
+                class="btn btn-primary"
+                onclick="checkVoltage()"
+              >
+                Submit
+              </button>
+              <button type="reset" class="btn btn-secondary">Reset</button>
+            </div>
+          </form>
+        </div>
+        <!-- card - instructions -->
+        <div class="w-50">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Steps for use multimeter</h5>
+              <p class="card-text">1. Switch multimeter to DC mode.</p>
+              <p class="card-text">2. Put red probe to "+" pin.</p>
+              <p class="card-text">3. Put black probe to "-" pin.</p>
+              <button class="btn btn-primary">Watch Tutorial >></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- battery dead modal -->
+    <div class="modal fade" id="bat-dead-modal" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Battery Replacement Needed !</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            your battery is dead. you have to replace a new battery. would you
+            like to purchase it from us, please select purchase now. if not you
+            can exit.
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-primary"
+              onclick="purchaseNow()"
+            >
+              Purchase Now
+            </button>
+            <button type="button" class="btn btn-primary" onclick="exit()">
+              Exit
+            </button>
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- battery drain alert -->
+    <div class="modal fade" id="bat-drain-modal" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Attention !</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            Your battery is fully drained. Please put it into a high charge for
+            10 minutes and enter the new voltage value..!
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-bs-dismiss="modal"
+            >
+              Ok
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- try to power on after highcharge modal -->
+    <div class="modal fade" id="check-after-high-charge" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Attention !</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            Now, Your battery has enough voltage. Please reinsert the battery
+            and try to power on the phone.
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-primary"
+              id="retryOkBtn"
+              data-bs-dismiss="modal"
+            >
+              Ok
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ask work or not modal -->
+    <div class="modal fade" id="ask-result" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Attention !</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">Is it work?</div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-primary"
+              id="yesBtn"
+              data-bs-dismiss="modal"
+            >
+              Yes
+            </button>
+            <button
+              type="button"
+              class="btn btn-danger"
+              id="noBtn"
+              data-bs-dismiss="modal"
+            >
+              No
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Vendor JS Files -->
+    <script src="../../../../assets/vendor/apexcharts/apexcharts.min.js"></script>
+    <script src="../../../../assets/vendor/chart.js/chart.umd.js"></script>
+    <script src="../../../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../../../../assets/vendor/echarts/echarts.min.js"></script>
+    <script src="../../../../assets/vendor/quill/quill.js"></script>
+    <script src="../../../../assets/vendor/simple-datatables/simple-datatables.js"></script>
+    <script src="../../../../assets/vendor/tinymce/tinymce.min.js"></script>
+    <script src="../../../../assets/vendor/php-email-form/validate.js"></script>
+
+    <!-- Main JS File -->
+    <script src="../../../../assets/js/mainjs.js"></script>
+    <script src="step-2.js"></script>
+  </body>
+</html>

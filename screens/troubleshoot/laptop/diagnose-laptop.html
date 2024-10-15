@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fix Me App</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+      rel="stylesheet"
+    />
+
+    <!-- Vendor CSS Files -->
+    <link
+      href="../../../assets/vendor/bootstrap/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="../../../assets/vendor/bootstrap-icons/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link
+      href="../../../assets/vendor/boxicons/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link href="../../../assets/vendor/quill/quill.snow.css" rel="stylesheet" />
+    <link
+      href="../../../assets/vendor/quill/quill.bubble.css"
+      rel="stylesheet"
+    />
+    <link
+      href="../../../assets/vendor/remixicon/remixicon.css"
+      rel="stylesheet"
+    />
+    <link
+      href="../../../assets/vendor/simple-datatables/style.css"
+      rel="stylesheet"
+    />
+
+    <!-- Main CSS File -->
+    <link href="../../../assets/css/style.css" rel="stylesheet" />
+
+    <style>
+      .img {
+        width: 100px;
+        height: 100px;
+        display: block;
+        margin: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="position-absolute ms-5 mt-4">
+      <a href="../../troubleshoot/select-device.html">
+        <img
+          style="width: 50px; height: 50px; display: block"
+          src="../../../assets/img/backbutton.png"
+          alt=""
+        />
+      </a>
+    </div>
+    <div class="container text-center mt-2">
+      <h1 style="font-family: serif" class="card-title text-center fs-1">
+        Diagnose Your Laptop
+      </h1>
+      <h5 class="card-title text-center fs-5">Please Select the Issue</h5>
+    </div>
+    <div class="container justify-content-center mt-5">
+      <div class="row row-cols-1 row-cols-md-4 g-4">
+        <a href="">
+          <div class="col">
+            <div class="card h-100">
+              <img
+                src="../../../assets/img/no-power.png"
+                class="img"
+                alt="..."
+              />
+              <div class="card-body">
+                <h5 class="card-title text-center">1.No Power</h5>
+                <p class="card-text"></p>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <a href="">
+          <div class="col">
+            <div class="card h-100">
+              <img
+                src="../../../assets/img/not-charging.png"
+                class="img"
+                alt="..."
+              />
+              <div class="card-body">
+                <h5 class="card-title text-center">2.Charging Issue</h5>
+                <p class="card-text"></p>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <a href="">
+          <div class="col">
+            <div class="card h-100">
+              <img
+                src="../../../assets/img/sound-error.png"
+                class="img"
+                alt="..."
+              />
+              <div class="card-body">
+                <h5 class="card-title text-center">3.Sound Issue</h5>
+                <p class="card-text"></p>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <a href="">
+          <div class="col">
+            <div class="card h-100">
+              <img
+                src="../../../assets/img/replacement.png"
+                class="img"
+                alt="..."
+              />
+              <div class="card-body">
+                <h5 class="card-title text-center">4.Replacements</h5>
+                <p class="card-text"></p>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <a href="">
+          <div class="col">
+            <div class="card h-100">
+              <img
+                src="../../../assets/img/signal-error.png"
+                class="img"
+                alt="..."
+              />
+              <div class="card-body">
+                <h5 class="card-title text-center">5.Signal Issue</h5>
+                <p class="card-text"></p>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <a href="">
+          <div class="col">
+            <div class="card h-100">
+              <img
+                src="../../../assets/img/laptop-displayerror.png"
+                class="img"
+                alt="..."
+              />
+              <div class="card-body">
+                <h5 class="card-title text-center">6.Display Error</h5>
+                <p class="card-text"></p>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <a href="">
+          <div class="col">
+            <div class="card h-100">
+              <img
+                src="../../../assets/img/software.png"
+                class="img"
+                alt="..."
+              />
+              <div class="card-body">
+                <h5 class="card-title text-center">7.Software</h5>
+                <p class="card-text"></p>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <a href="">
+          <div class="col">
+            <div class="card h-100">
+              <img src="../../../assets/img/other.png" class="img" alt="..." />
+              <div class="card-body">
+                <h5 class="card-title text-center">8.Hire Technician</h5>
+                <p class="card-text"></p>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+    <!-- Vendor JS Files -->
+    <script src="../../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../../../assets/vendor/apexcharts/apexcharts.min.js"></script>
+    <script src="../../../assets/vendor/chart.js/chart.umd.js"></script>
+    <script src="../../../assets/vendor/echarts/echarts.min.js"></script>
+    <script src="../../../assets/vendor/quill/quill.js"></script>
+    <script src="../../../assets/vendor/simple-datatables/simple-datatables.js"></script>
+    <script src="../../../assets/vendor/tinymce/tinymce.min.js"></script>
+    <script src="../../../assets/vendor/php-email-form/validate.js"></script>
+
+    <!-- Main JS File -->
+    <script src="../../../assets/js/mainjs.js"></script>
+  </body>
+</html>
