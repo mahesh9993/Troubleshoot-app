@@ -12,7 +12,9 @@ HTML, JS and Bootstrap with electron js framwork and SQLite for database.
 * Node.js and npm (or yarn) installed
 * Source.rar from (https://drive.google.com/file/d/1_F3zI9JfLrP_b6SRcrknnxhRNHMbhNSS/view?usp=sharing)
 ### Setup :
-* Clone repository git clone https://github.com/mahesh9993/Troubleshoot-app.git
-* Extract source.rar to project deroctory
-* Open terminal on project deroctory and install dependencies by npm install (yarn install)
+1 Clone repository git clone https://github.com/mahesh9993/Troubleshoot-app.git
+2 Extract source.rar to project deroctory
+3 Open terminal on project deroctory and install dependencies with npm install (or yarn install)
+### Run Application
+* open terminal in project derectory and run development server with npm start (or yarn stat)
 
